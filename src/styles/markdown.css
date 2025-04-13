@@ -110,6 +110,7 @@
   font-size: 14px !important;
   line-height: normal;
   font-family: var(--code-font) !important;
+  letter-spacing: normal; /* Reset letter spacing for code lines */
 }
 
 .article code {
