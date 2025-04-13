@@ -287,6 +287,7 @@ const navCount = YukinaConfig.navigators.length;
 
   // Set theme
   const setTheme = (theme: string) => {
+    // console.log(`[Theme Debug] Setting theme to: ${theme}`); // Log theme being set - Removed Debug
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
     currentTheme = theme;
@@ -300,7 +301,9 @@ const navCount = YukinaConfig.navigators.length;
     else themeIconLight = reinitializeIcon(themeIconLight);
 
     // Toggle dark class
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    const isDark = theme === "dark";
+    document.documentElement.classList.toggle("dark", isDark);
+    // console.log(`[Theme Debug] document.documentElement.classList.contains('dark'): ${document.documentElement.classList.contains('dark')}`); // Log dark class status - Removed Debug
   };
 
   // Click to switch theme
@@ -310,7 +313,26 @@ const navCount = YukinaConfig.navigators.length;
 
   // Initialize
   document.addEventListener("DOMContentLoaded", () => {
-    setTheme(currentTheme);
+    // console.log("[Theme Debug] DOMContentLoaded event fired."); // Removed Debug
+    // Check localStorage first
+    let initialTheme = localStorage.getItem("theme");
+    // let themeSource = "localStorage"; // Removed Debug Variable
+    // If no theme in localStorage, check system preference
+    if (!initialTheme) {
+      initialTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      // themeSource = "system preference"; // Removed Debug Variable
+    } else {
+       // Ensure initialTheme is either 'light' or 'dark', default to 'light' if invalid value found
+       if (initialTheme !== 'light' && initialTheme !== 'dark') {
+           // console.warn(`[Theme Debug] Invalid theme value found in localStorage: "${initialTheme}". Defaulting to 'light'.`); // Removed Debug
+           initialTheme = 'light';
+           // themeSource = 'default (invalid localStorage)'; // Removed Debug Variable
+           localStorage.setItem("theme", initialTheme); // Correct invalid value
+       }
+    }
+    // console.log(`[Theme Debug] Initial theme detected: ${initialTheme} (source: ${themeSource})`); // Removed Debug
+    // Set the theme based on the determined initial value
+    setTheme(initialTheme);
     menuIconClosed.style.display = "block";
   });
 

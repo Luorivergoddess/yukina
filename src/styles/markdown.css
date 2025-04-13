@@ -141,3 +141,23 @@
   border-radius: 0.75rem !important;
   scrollbar-width: thin;
 }
+
+/* Override Shiki light theme background in light mode for better contrast */
+html:not(.dark) .article .astro-code,
+html:not(.dark) .article pre {
+  background-color: var(--primary-color-lighten) !important;
+  /* Text color should still be handled by github-light theme */
+}
+
+/* Force Shiki dark theme colors in dark mode to override inline styles */
+html.dark .article .astro-code,
+html.dark .article pre {
+  background-color: var(--shiki-dark-bg) !important;
+  color: var(--shiki-dark) !important;
+}
+
+/* Ensure nested spans inherit the correct color in dark mode */
+html.dark .article .astro-code span,
+html.dark .article pre span {
+    color: inherit !important;
+}

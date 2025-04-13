@@ -39,7 +39,11 @@ export default defineConfig({
   ],
   markdown: {
     shikiConfig: {
-      theme: "github-dark-default",
+      // theme: "github-dark-default", // Replaced with themes object
+      themes: {
+        light: "github-light",
+        dark: "github-dark-default",
+      },
     },
     remarkPlugins: [remarkReadingTime, remarkMath],
     rehypePlugins: [
