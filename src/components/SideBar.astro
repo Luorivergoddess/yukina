@@ -150,7 +150,7 @@ const tagKeys = [...tags.keys()];
 
   .username > p {
     @apply text-center text-xl font-semibold text-[var(--text-color)];
-    font-family: var(--title-font);
+    font-family: var(--primary-font); /* Changed from --title-font */
   }
 
   .username > div {
@@ -158,7 +158,8 @@ const tagKeys = [...tags.keys()];
   }
 
   .slogan {
-    font-family: var(--title-font);
+    font-family: var(--primary-font); /* Changed from --title-font */
+    white-space: pre-line; /* Allow line breaks from \n */
   }
 
   .title {

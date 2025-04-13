@@ -1,5 +1,7 @@
-# Special thanks to:
+# 关于 Luoshen / About Me
 
-- [Hexo Shoka theme](https://github.com/amehime/hexo-theme-shoka) for providing design inspiration
+你好，我是 Luoshen。
 
-- [Astro Fuwari template](https://github.com/saicaca/fuwari) for providing the main design concept and part of the implementation
+> Dreaming in the moonlight, wandering in the stars.
+
+欢迎来到我的数字空间。
